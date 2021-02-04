@@ -4,9 +4,9 @@ namespace YoLink;
 
 class Auth
 {
-    private $yolink_api;
-    private $CSID;
-    private $SecKey;
+    public $yolink_api;
+    public $CSID;
+    public $SecKey;
 
     public function __construct($CSID, $SecKey)
     {
@@ -16,11 +16,7 @@ class Auth
         $this->CSID = $CSID;
         $this->SecKey = $SecKey;
 
-        $authPaylod['url'] = $this->yolink_api;
-        $authPaylod['SecKey'] = $this->SecKey;
-        $authPaylod['header'] = $this->auth_header();
-
-        return $authPaylod;
+        $this->header = $this->auth_header();
     }
 
     private function oauth()
