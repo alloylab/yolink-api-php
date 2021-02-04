@@ -4,14 +4,9 @@ namespace YoLink;
 
 class Auth
 {
-    private $moen_api_v1;
-    private $header;
-    private $username;
-    private $password;
-
     private $yolink_api;
     private $CSID;
-    private $SecKey
+    private $SecKey;
 
     public function __construct($CSID, $SecKey)
     {
