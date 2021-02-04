@@ -12,7 +12,7 @@ require_once('../src/LeakSensor/LeakSensor.php');
 
 try {
     $CSID = getenv('CSID');
-    $password = getenv('SecKey');
+    $SecKey = getenv('SecKey');
     $targetDevice = getenv('targetDevice');
     $targetToken = getenv('targetToken');
 
