@@ -1,0 +1,36 @@
+include:
+    - template: SAST.gitlab-ci.yml
+    - template: Dependency-Scanning.gitlab-ci.yml
+
+stages:
+    - tests
+    - security
+
+php7:
+    stage: tests
+    image: registry.alloylab.com/open-source/docker-images/php:v7
+    script:
+        - cd tests/;
+        - composer install;
+        - php API_Endpoints.php;
+
+php8:
+    stage: tests
+    image: registry.alloylab.com/open-source/docker-images/php:latest
+    script:
+        - cd tests/;
+        - composer install;
+        - php API_Endpoints.php;
+
+sast:
+    stage: security
+    variables:
+        SAST_DEFAULT_ANALYZERS: "phpcs-security-audit, secrets"
+        DOCKER_TLS_CERTDIR: "/certs/${CI_JOB_ID}"
+    services:
+
+dependency_scanning:
+    stage: security
+    variables:
+        DOCKER_TLS_CERTDIR: "/certs/${CI_JOB_ID}"
+    services:

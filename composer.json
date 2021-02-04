@@ -1,0 +1,31 @@
+{
+    "name": "alloylab/yolink",
+    "type": "library",
+    "description": "Implementation ofYoLink API in PHP",
+    "keywords": [
+        "YoLink",
+        "API"
+    ],
+    "homepage": "https://git.alloylab.com/open-source/yolink-api-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trevor Ferre",
+            "email": "trevor@alloylab.com",
+            "homepage": "https://alloylab.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "nyholm/psr7": "^1.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "YoLink\\": "src/"
+        }
+    }
+}
