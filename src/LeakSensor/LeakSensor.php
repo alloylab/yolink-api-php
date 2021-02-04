@@ -4,7 +4,7 @@ namespace YoLink;
 
 class LeakSensor
 {
-    public function getState($authPaylod, $targetDevice, $targetToken)
+    public static function getState($authPaylod, $targetDevice, $targetToken)
     {
         $post_json = json_encode(array(
             'method' => 'LeakSensor.getState',
@@ -24,27 +24,27 @@ class LeakSensor
         return $sensor_data;
     }
 
-    public function online_check($sensor_state)
+    public static function online_check($sensor_state)
     {
         return $sensor_state->data->online;
     }
 
-    public function leak_status($sensor_state)
+    public static function leak_status($sensor_state)
     {
         return $sensor_state->data->state->state;
     }
 
-    public function battery_check($unit_name, $af_unit_id, $sensor_state)
+    public static function battery_check($unit_name, $af_unit_id, $sensor_state)
     {
         return $sensor_state->data->state->battery;
     }
 
-    public function firmware_check($sensor_state)
+    public static function firmware_check($sensor_state)
     {
         return $sensor_state->data->state->version;
     }
 
-    public function temperature_check($unit_name, $af_unit_id, $sensor_state)
+    public static function temperature_check($unit_name, $af_unit_id, $sensor_state)
     {
         //Note: I would apply a 9 degree offset for the acutal ambient temperature
 
