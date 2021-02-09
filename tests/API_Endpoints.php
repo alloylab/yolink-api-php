@@ -8,7 +8,7 @@ require_once('vendor/autoload.php');
 require_once('../src/Auth.php');
 require_once('../src/Client.php');
 require_once('../src/Helper.php');
-require_once('../src/LeakSensor/LeakSensor.php');
+require_once('../src/LeakSensor.php');
 
 try {
     $CSID = getenv('CSID');
