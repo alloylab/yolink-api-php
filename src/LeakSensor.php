@@ -16,7 +16,7 @@ class LeakSensor
         $url = $authPaylod->yolink_api;
         $auth_header = $authPaylod->header;
         $auth_header['headers']['ys-sec'] = \YoLink\Helper::hashed_secKey($post_json, $authPaylod->SecKey);
-    
+
         $request = \YoLink\Client::post($url, $auth_header, $post_json);
 
         $sensor_data = json_decode($request);
@@ -34,7 +34,7 @@ class LeakSensor
         return $sensor_state->data->state->state;
     }
 
-    public static function battery_check($unit_name, $af_unit_id, $sensor_state)
+    public static function battery_check($sensor_state)
     {
         return $sensor_state->data->state->battery;
     }
@@ -44,7 +44,7 @@ class LeakSensor
         return $sensor_state->data->state->version;
     }
 
-    public static function temperature_check($unit_name, $af_unit_id, $sensor_state)
+    public static function temperature_check($sensor_state)
     {
         //Note: I would apply a 9 degree offset for the acutal ambient temperature
 
