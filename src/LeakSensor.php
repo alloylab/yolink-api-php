@@ -15,8 +15,8 @@ class LeakSensor
 
         $url = $authPaylod->yolink_api;
         $auth_header = $authPaylod->header;
-        $auth_header['ys-sec'] = \YoLink\Helper::hashed_secKey($post_json, $authPaylod->SecKey);
-
+        $auth_header['headers']['ys-sec'] = \YoLink\Helper::hashed_secKey($post_json, $authPaylod->SecKey);
+    
         $request = \YoLink\Client::post($url, $auth_header, $post_json);
 
         $sensor_data = json_decode($request);

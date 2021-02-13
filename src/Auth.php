@@ -35,10 +35,12 @@ class Auth
     private function auth_header()
     {
         $auth_header = array(
-            'Accept: application/json',
-            'Content-Type: application/json',
-            'ktt-ys-brand: yolink',
-            'KTT-CSID: ' . $this->CSID,
+            'headers' => array(
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'ktt-ys-brand' => 'yolink',
+                'KTT-CSID' =>  $this->CSID,
+            ),
         );
 
         return $auth_header;
