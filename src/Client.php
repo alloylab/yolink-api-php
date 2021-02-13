@@ -10,10 +10,10 @@ class Client
     {
         try {
             $client = new GuzzleClient($header);
-            $response = $client->request('POST', $url, ['body' => json_encode($post_data)]);
-
+            $response = $client->request('POST', $url, ['body' => $post_data]);
+        
             if ($response->getStatusCode() < 300) {
-                $result = $response->getBody();
+                $result = $response->getBody()->getContents();
             } else {
                 throw new \Exception(__FUNCTION__ . ': ' . $response->getStatusCode() . ' - invalid reponse from api');
             }
@@ -31,7 +31,7 @@ class Client
             $response = $client->request('GET', $url);
 
             if ($response->getStatusCode() < 300) {
-                $result = $response->getBody();
+                $result = $response->getBody()->getContents();
             } else {
                 throw new \Exception(__FUNCTION__ . ': ' . $response->getStatusCode() . ' - invalid reponse from api');
             }

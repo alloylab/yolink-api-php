@@ -18,7 +18,15 @@ try {
 
     $YoLink_Auth = new \YoLink\Auth($CSID, $SecKey);
 
-    \YoLink\LeakSensor::getState($YoLink_Auth, $targetDevice, $targetToken);
-} catch (Exception $e) {
-    throw new Exception($e);
+    $sensor_state = \YoLink\LeakSensor::getState($YoLink_Auth, $targetDevice, $targetToken);
+
+    $online = \YoLink\LeakSensor::online_check($sensor_state);
+
+    if ($online) {
+        var_dump($sensor_state);
+    } else {
+        throw new \Exception('ERROR');
+    }
+} catch (\Exception $e) {
+    throw new \Exception($e);
 }
